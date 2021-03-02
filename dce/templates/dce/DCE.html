@@ -1,0 +1,87 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Aufgabe starten
+{% endblock %}
+{% block styles %}
+  <style type="text/css">
+.a{
+        padding-top: 10px ;
+        padding-bottom: 20px ;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-style: solid;
+    }
+    * {
+        font-size: 20px;/* <-- fonts */
+    }
+.b{
+        padding-top: 30px ;
+        padding-bottom: 20px ;
+
+    }
+* {
+    font-size: 20px;/* <-- fonts */
+}
+img.im1 {
+  max-width:80%;
+  max-height:80%;
+  padding-bottom: 10px ;
+}
+img.im2 {
+  max-width:110%;
+  max-height:110%;
+  padding-bottom: 1px ;
+}
+img.im3 {
+  max-width:90%;
+  max-height:90%;
+  padding-bottom: 30px ;
+}
+  </style>
+{% endblock %}
+{% block content %}
+{% if participant.vars.type == 'nudge' %} 
+<div class=a>
+<table class="table">  
+    <table border=0 class="centerTable" width = "100%">
+        <tbody>
+            <tr>
+                <td width="100%" colspan=2><p align="center" style="font-size:103%;"><strong>Die Wälder dieser Welt und das globale Klima sind eng miteinander verknüpft, da Bäume einen gigantische Kohlenstoffspeicher darstellen.</strong></p>
+            </tr>
+            <tr>
+                <td width="66%" ><p align="center" style="font-size:110%;"><strong>Ein einzelner Baum in einem intakten Wald in der Region Nawalparasi in Nepal kann bis zu 1.2 Tonnen CO<small>2</small> speichern.</strong></p> <p align="justify"><strong>Je mehr Bäume Sie durch das Lösen von Aufgaben pflanzen, desto mehr atmosphärisches CO<small>2</small> kann in Biomasse gespeichert werden. Damit haben Sie die Möglichkeit aktiv etwas zum Klimaschutz beizutragen und helfen zudem die nepaliseische Flora und Fauna intakt zu halten.</strong></p></td>
+                <td width="30%" style="vertical-align: top; text-align: center"><img class=im1 src="{% static "pebs/treeco2.png" %}" "/></td>
+            </tr>
+       </tbody>
+    </table>
+</table>
+<br>
+<p align="justify"><strong>Im folgenden wird Ihnen während des Lösens der Aufgaben angezeigt, wie viele Aufgaben Sie im Vergleich zu vorherigen Teilnehmenden bereits gelöst haben. Die Perfomance anderer Teilnehmender wird Ihnen durch die Balken in der Grafik angezeigt. Zudem signalisiert ein Gesicht links neben dem Diagramm folgende relative Performance:</strong></p>
+<table class="table">  
+    <table border=0 class="centerTable" width = "100%">
+        <tbody>
+            <tr>
+                <td width="55%" style="vertical-align: center; text-align: left"><img class=im2 src="{% static "pebs/Performance1.png" %}" "/></td>
+                <td width="45%" style="vertical-align: bottom; text-align: right" ><img class=im3 src="{% static "pebs/nudgechart1.png" %}" "/></td>
+            </tr>
+       </tbody>
+    </table>
+</table>
+</div>
+{% endif %}
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/1.8/ref/templates/language/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+<div class=b>
+<p>Bitte klicken Sie auf "Aufgabe starten", sobald Sie bereit sind.</p>
+</div>
+    <button class="answer btn btn-success"  >Aufgabe starten</button>
+
+{% endblock %}

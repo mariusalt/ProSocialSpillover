@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Willkommen
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+
+.d{
+        padding-top: 10px ;
+        padding-bottom: 30px ;
+    }
+* {
+    font-size: 17px;/* <-- fonts */
+}
+
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class=d>
+{% formfield player.treatment label='Welches Treatment soll gestartet werden?' %}
+</div>
+
+    {% next_button %}
+
+{% endblock %}
+
+
+

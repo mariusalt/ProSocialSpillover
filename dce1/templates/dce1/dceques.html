@@ -1,0 +1,125 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block title %}
+    Entscheidung {{ player.round_number }} von 6
+{% endblock %}
+{% block styles %}
+	<style type="text/css">
+	img.im1 {
+      max-width:50%;
+      max-height:50%;
+    }
+    img.im2 {
+      max-width:50%;
+      max-height:50%;
+    }
+    img.im3 {
+      max-width:60%;
+      max-height:60%;
+    }
+
+    input[type='radio'] { transform: scale(2); }
+	.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+	.textDiv {
+		position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+		z-index:7;
+	}
+	.cont {
+		z-index:1;
+	}
+    </style>
+
+{% endblock %}
+
+{% block content %}
+<table class="centerTable" style="border-collapse: collapse; height: 271px;" border="1" width="100%" cellpadding="5">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 160px; height: 18px;">&nbsp;</td>
+<td style="width: 160px; height: 18px; text-align: center;"><strong><font size= "5px";>Mobiltelefon1</font></strong></td>
+<td style="width: 160px; height: 18px; text-align: center;"><strong><font size= "5px";>Mobiltelefon2</font></strong></td>
+<td style="width: 160px; height: 18px; text-align: center;" rowspan="6"><strong><font size= 5px;>Keine der beiden Optionen</font></strong></td>
+</tr>
+<tr style="height: 78px;">
+<td style="width: 160px; height: 78px; vertical-align: middle;">
+<p><strong><font size= 5px;>Akkukapazit&auml;t</font></strong></p>
+</td>
+<td style="width: 160px; height: 78px; text-align: center;"><div style="position: relative;text-align: center;"><img class=im3 src="{% static "dce/battery.jpg" %}" />
+  <div class="textDiv"><p><strong><font size="3">{{attr11}}mAh</font></strong></p></div></div><div><strong><font size="5">{{attr17}}</font><br><font size="3">h=Akkulaufzeit in Stunden</font></strong></div></td>
+<td style="width: 160px; height: 78px; text-align: center;"><div style="position: relative;text-align: center;"><img class=im3 src="{% static "dce/battery.jpg" %}" />
+  <div class="textDiv"><p><strong><font size="3">{{attr21}}mAh</font></strong></p></div></div><div><strong><font size="5">{{attr27}}</font><br><font size="3">h=Akkulaufzeit in Stunden</font></strong></div></td>
+</tr>
+<tr style="height: 78px;">
+<td style="width: 160px; height: 78px;vertical-align: middle;">
+<p><strong><font size= 5px;>Kamera</font></strong></p>
+</td>
+<td style="width: 160px; height: 78px; text-align: center;"><div><img class=im2 src="{% static "dce/4k.jpg" %}" /></div><div><strong><font size= 5px;>{{attr12}}</font></strong></div></td>
+<td style="width: 160px; height: 78px; text-align: center;"><div><img class=im2 src="{% static "dce/4k.jpg" %}" /></div><div><strong><font size= 5px;>{{attr22}}</font></strong></div></td>
+</tr>
+<tr style="height: 78px;">
+<td style="width: 160px; height: 78px;vertical-align: middle;">
+<p><strong><font size= 5px;>Displaygr&ouml;&szlig;e</font></strong></p>
+</td>
+<td style="width: 160px; height: 78px; text-align: center;"> 
+  <div style="position: relative;text-align: center;"><img class=im1 src="{% static "dce/phone1.png" %}" />
+  <div class="textDiv"><p style="color:white;"><strong><font size= 5px;>{{attr13}} Zoll</font></strong></p></div></div>
+</td>
+<td style="width: 160px; height: 78px; text-align: center;">
+  <div style="position: relative;text-align: center;"><img class=im1 src="{% static "dce/phone1.png" %}" />
+  <div class="textDiv"><p style="color:white;"><strong><font size= 5px;>{{attr23}} Zoll</font></strong></p></div></div>
+</td>
+</tr>
+<tr style="height: 78px;">
+<td style="width: 160px; height: 78px;vertical-align: middle;">
+<p><strong><font size= 5px;>Firmensitz</font></strong></p>
+</td>
+<td style="width: 160px; height: 78px; text-align: center;"><strong><font size= 5px;>{{attr16}}</font></strong></td>
+<td style="width: 160px; height: 78px; text-align: center;"><strong><font size= 5px;>{{attr26}}</font></strong></td>
+</tr>
+<tr style="height: 69px;">
+<td style="width: 160px; height: 69px;vertical-align: middle;"><strong><font size= 5px;>Preis</font></strong></td>
+<td style="width: 160px; height: 69px; text-align: center;"><strong><font size= 5px;>{{attr14}}€</font></strong></td>
+<td style="width: 160px; height: 69px; text-align: center;"><strong><font size= 5px;>{{attr24}}€</font></strong></td>
+</tr>
+<tr style="height: 55px;">
+<td style="width: 160px; height: 55px;">&nbsp;</td>
+<td style="width: 160px; height: 55px; text-align: center;"><input name="submitted_answer" required="" type="radio" value="1" /></td>
+<td style="width: 160px; height: 55px; text-align: center;"><input name="submitted_answer" required="" type="radio" value="2" /></td>
+<td style="width: 160px; height: 55px; text-align: center;"><input name="submitted_answer" required="" type="radio" value="3" /></td>
+</tr>
+</tbody>
+</table>
+
+ <p>&nbsp;</p>
+<div style="width: 100%; overflow:">
+<div style="width: 65%; float: left; vertical-align: middle; padding-right: 10px;">
+<p>          <strong><font size= 5px;>Wie sicher sind Sie, dass Sie diese Kaufentscheidung genau so treffen würden?</font></strong></p>
+<table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "90%">
+         <thead>
+           <tr>
+            <td valign="top" align="right"><p><font size= 5px;>sehr unsicher</font></p></td>
+            <td valign="center" width="10%" align="center"><input type="radio" name="sec" value="0" id="1" required/></td>   
+            <td valign="center" width="10%" align="center"><input type="radio" name="sec" value="1" id="2" required/></td>  
+            <td valign="center" width="10%" align="center"><input type="radio" name="sec" value="2" id="3" required/></td>  
+            <td valign="center" width="10%" align="center"><input type="radio" name="sec" value="3" id="4" required/></td>   
+            <td valign="center" width="10%" align="center"><input type="radio" name="sec" value="4" id="5" required/></td>     
+            <td valign="top" align="left"><p><font size= 5px;>sehr sicher</font></p> </td>             
+          </tr>
+        </thead>
+    </table>     {{ form.sec.errors }}
+    </div> 
+<div style="margin-left: 65%; vertical-align: bottom; text-align: left; width: 35%;">  
+    <p>&nbsp;</p>
+     <p>&nbsp;</p>
+    {% next_button %}
+</div>
+</div>
+{% endblock %}

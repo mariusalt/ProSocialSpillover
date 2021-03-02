@@ -1,0 +1,162 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Willkommen
+{% endblock %}
+{% block scripts %}
+<script language="javascript" type="text/javascript"> 
+        document.getElementById("cont").style.display="none";
+        function showhide1()
+        {
+        var div = document.getElementById("cont");
+        if (div.style.display === "none") {
+        div.style.display = "block";
+        } else {
+        div.style.display = "none";
+        }
+        } 
+
+        document.getElementById("cont1").style.display="none";
+        function showhide2()
+        {
+        var div = document.getElementById("cont1");
+        if (div.style.display === "none") {
+        div.style.display = "block";
+        } else {
+        div.style.display = "none";
+        }
+        } 
+
+
+
+</script>
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+#button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+    background:-moz-linear-gradient(top, #ededed 5%, #e0e0e0 100%);
+    background:-webkit-linear-gradient(top, #ededed 5%, #e0e0e0 100%);
+    background:-o-linear-gradient(top, #ededed 5%, #e0e0e0 100%);
+    background:-ms-linear-gradient(top, #ededed 5%, #e0e0e0 100%);
+    background:linear-gradient(to bottom, #ededed 5%, #e0e0e0 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+    background-color:#b7bac2;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #7c7f87;
+    display:inline-block;
+    cursor:pointer;
+    color:#e0e0e0;
+    font-family:Arial;
+    font-size:17px;
+    padding:5px 76px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1c2847;
+    }
+    #button:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+    background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+    background-color:#7c858f;
+    }
+    #button:active {
+    position:relative;
+    top:1px;
+    }
+.z{
+        padding-top: 5px ;
+        padding-bottom: 10px ;
+    }
+.a{
+        padding-top: 10px ;
+        font-size: 20px;
+    }
+.b{
+        padding-top: 10px ;
+        padding-bottom: 10px ;
+        font-size: 20px;
+    }
+.c{
+        padding-top: 10px ;
+        padding-bottom: 10px ;
+        font-size: 20px;
+    }
+.d{
+        padding-top: 10px ;
+        padding-bottom: 30px ;
+        font-size: 20px;
+    }
+
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class=a>
+<p><strong>Herzlich willkommen zur wissenschaftlichen Studie!</strong></p>
+</div> 
+<div class="z">
+<div id='button' class="z" onclick="showhide1()"><font color="black">Wer steht hinter der Studie?</font></div>
+<div id="cont">
+<p>Die Studie ist Teil eines Forschungsvorhabens des Leibniz Zentrums für Europäische Wirtschaftsforschung (ZEW) in Mannheim. Das ZEW ist ein gemeinnütziges Forschungsinstitut und Mitglied der Leibniz Wissenschaftsgemeinschaft. Finanziert wird das Forschungsvorhaben vom Bundesministerium für Bildung und Forschung.</p>
+</div>
+
+<div class="z">
+<div id='button' class="z" onclick="showhide2()"><font color="black">Was passiert mit meinen Daten?</font></div>
+<div id="cont1">
+<p>Ihre Angaben werden ausschließlich für wissenschaftliche Zwecke verwendet und in anonymisierter Form ausgewertet. Ihre persönlichen Angaben werden nicht mit den Angaben in der Befragung in Verbindung gebracht oder an Dritte weitergegeben.</p>
+</div>
+<div class=b>
+<p align="justify"><strong>Informationen zu Inhalt und Ablauf der Studie </strong><br> 
+
+<p align="justify">Sehr geehrte Teilnehmerin, sehr geehrter Teilnehmer,
+Bevor wir mit der Befragung beginnen, finden Sie hier die wichtigsten Eckpunkte zu Ihrer Teilnahme:</p>
+<ul>
+	<li>Die Teilnahme dauert durchschnittlich 15 Minuten.</li>
+	<li>Die Studie besteht aus zwei Teilen: 
+    <ul>
+    <li>Im ersten Teil treffen Sie hypothetische Kaufentscheidungen. (ca. 10 Min)</li>
+    <li> Der zweite Teil besteht aus einem Fragebogen. (ca. 5 Min)</li>
+    </ul>
+    {% if participant.vars.type != 'lowmon' %}
+	<li>Für die Teilnahme erhalten Sie 7 Euro.</li>
+    <li>Zudem erhalten Sie {% if participant.vars.choi != 12 %}0,21{% else %}0,42{% endif %} Euro für jede getroffene hypothetische Kaufentscheidung.</li>
+    <li>Insgesamt werden Sie durchschnittlich 12 Euro verdienen.</li>
+    {% else %}
+    <li>Für die Teilnahme erhalten Sie 7 Euro.</li>
+    <li>Zudem erhalten Sie 1 Euro für jede korrekt beantwortete Verständnisfrage.</li>
+    <li>Insgesamt werden Sie durchschnittlich 12 Euro verdienen.</li>
+    {% endif %}
+</ul>
+</div>
+{% if player.treatment == 'noenvi' %}
+<div class=d>
+<p align="justify">
+Falls Sie an der Studie teilnehmen möchten, klicken Sie bitte auf "Weiter":</p>
+</div>
+{% elif player.treatment == 'force' %}
+<div class=d>
+<p align="justify">
+Klicken Sie nun bitte auf "Weiter":</p>
+</div>
+{% else %}
+<div class=d>
+<p align="justify">Durch das Beantworten von Verständnisfragen können Sie in Teil 1 etwas zum Wohlergehen der Umwelt beitragen. Falls Sie dies nicht möchten, heben Sie nun bitte die Hand und wir zahlen Ihnen 2€ aus.<br>
+Anderenfalls klicken Sie bitte auf "Weiter":</p>
+</div>
+
+{% endif %}
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+    Ihr Ergebnis:
+{% endblock %}
+{% block styles %}
+<style type="text/css">
+.c{
+        padding-top: 5px ;
+        padding-bottom: 5px ;
+    }
+  * {
+          font-size: 20px;/* <-- fonts */
+      }
+img.im2 {
+  max-width:90%;
+  max-height:90%;
+  padding-bottom: 1px ;
+}
+
+.bottom {
+  position:fixed;
+  bottom:0;
+  text-align: right;
+}
+
+tr.size td { 
+   font-size: 90px !important; 
+}
+
+ </style>
+ {% endblock %} 
+{% block content %}
+{% if participant.vars.type == 'noenvi' %}
+<div class="c">   
+    <table border=0 class="centerTable" width = "100%">
+        <tbody>
+            <tr>
+            <td width="40px" align="left" height="90px" colspan==2><p><strong><font size="3">Sie haben alle Aufgaben gelöst!</font></strong></p></td>
+            </tr>
+        </tbody>
+    </table>
+</div><br>
+<button class="answer btn btn-success" >Zu den Kaufentscheidungen</button>
+{% elif participant.vars.type == 'lowmon' %}
+            <div class="c">   
+    <table border=0 class="centerTable" width = "100%">
+        <tbody>
+        <tr>
+              <td width="40px" align="left" height="70px"><img src="{% static "dce/euro.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="70px"><img src="{% static "dce/euro.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="70px"><img src="{% static "dce/euro.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="70px"><img src="{% static "dce/euro.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="70px"><img src="{% static "dce/euro.png" %}" style="width:100px;height:120px;"/></td>
+            </tr>
+            <tr>
+            <td colspan=5 width="40px" align="left" height="90px"><strong>Sie erhalten einen Auszahlungsbonus von 5€!</strong></td>
+            </tr>
+            <tr>
+            <td colspan=5 width="40px" align="left" height="45px"></td>
+            </tr>
+            <tr>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+            </tr>
+        </tbody>
+    </table>
+  <table border=0 class="centerTable" width = "100%">
+        <tbody>
+            <tr>
+              <td  align="left" colspan=2 ><p><strong><font size="5"><br>Zudem haben sie die Pflanzung von 5 Bäumen in dem Projekt in Nawalparasi ermöglicht!</font></strong></p></td>
+            </tr>
+            <tr>
+            <td  align="left" colspan=2 ><p><strong><p><font size=3><strong>
+              Den Nachweis, dass die Spenden auch tatsächlich getätigt werden, erhalten Sie, wenn Sie nach Ablauf der Studie Ihre E-Mail Adresse angeben.</font></strong></p></td>
+              </tr>
+            
+        </tbody>
+    </table>
+</div>
+<table border=0 class="centerTable" width = "100%">
+        <tbody>
+            <tr>
+            <td width="30%" style="vertical-align: bottom; text-align: left" >    <button class="answer btn btn-success" >Zu den Kaufentscheidungen</button> </td>
+            <td width="70%" style="vertical-align: bottom; text-align: right" >{% if participant.vars.type == 'noenvi' %}{% else %}<img class=im2 src="{% static "dce/Thanks2.png" %}" "/> {% endif %}</td>
+            </tr>
+     </tbody>
+    </table>       
+            
+           
+{% else %}
+<div class="c">   
+    <table border=0 class="centerTable" width = "100%">
+        <tbody>
+            <tr>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+              <td width="40px" align="left" height="90px"><img src="{% static "dce/tree.png" %}" style="width:100px;height:120px;"/></td>
+            </tr>
+        </tbody>
+    </table>
+  <table border=0 class="centerTable" width = "100%">
+        <tbody>
+            <tr>
+              <td  align="left" colspan=2 ><p><strong><font size="5"><br>Sie haben die Pflanzung von 5 Bäumen in dem Projekt in Nawalparasi ermöglicht!</font></strong></p></td>
+            </tr>
+            <tr>
+            <td  align="left" colspan=2 ><p><strong><p><font size=3><strong>
+              Den Nachweis, dass die Spenden auch tatsächlich getätigt werden, erhalten Sie, wenn Sie nach Ablauf der Studie Ihre E-Mail Adresse angeben.</font></strong></p></td>
+              </tr>
+            
+        </tbody>
+    </table>
+</div>
+<table border=0 class="centerTable" width = "100%">
+        <tbody>
+            <tr>
+            <td width="30%" style="vertical-align: bottom; text-align: left" >    <button class="answer btn btn-success" >Zu den Kaufentscheidungen</button> </td>
+            <td width="70%" style="vertical-align: bottom; text-align: right" >{% if participant.vars.type == 'noenvi' %}{% else %}<img class=im2 src="{% static "dce/Thanks2.png" %}" "/> {% endif %}</td>
+            </tr>
+     </tbody>
+    </table>       
+
+{% endif %}
+
+{% endblock %}

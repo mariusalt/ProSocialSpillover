@@ -1,0 +1,206 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Informationen zur Studie
+{% endblock %}
+{% block scripts %}
+<script language="javascript" type="text/javascript"> 
+        document.getElementById("cont").style.display="none";
+        function showhide1()
+        {
+        var div = document.getElementById("cont");
+        if (div.style.display === "none") {
+        div.style.display = "block";
+        } else {
+        div.style.display = "none";
+        }
+        } 
+
+
+
+</script>
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+#button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+    background:-moz-linear-gradient(top, #ededed 5%, #d4d4d4 100%);
+    background:-webkit-linear-gradient(top, #ededed 5%, #d4d4d4 100%);
+    background:-o-linear-gradient(top, #ededed 5%, #d4d4d4 100%);
+    background:-ms-linear-gradient(top, #ededed 5%, #d4d4d4 100%);
+    background:linear-gradient(to bottom, #ededed 5%, #d4d4d4 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+    background-color:#b7bac2;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #7c7f87;
+    display:inline-block;
+    cursor:pointer;
+    color:#e0e0e0;
+    font-family:Arial;
+    font-size:15px;
+    padding:5px 76px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1c2847;
+    }
+    #button:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+    background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+    background-color:#7c858f;
+    }
+    #button:active {
+    position:relative;
+    top:1px;
+    }
+.z{
+        padding-bottom: 5px ;
+    }
+.a{
+        padding-top: 10px ;
+        padding-bottom: 10px ;
+        font-size: 20px;
+    }
+.b{
+        padding-top: 10px ;
+        padding-bottom: 10px ;
+        font-size: 20px;
+    }
+.c{
+        padding-top: 10px ;
+        padding-bottom: 50px ;
+        font-size: 20px;
+    }
+.d{
+        padding-top: 10px ;
+        padding-bottom: 30px ;
+        font-size: 20px;
+    }
+
+img.im1 {
+  max-width:70%;
+  max-height:70%;
+  padding-bottom: 40px ;
+}
+img.im6 {
+  max-width:120%;
+  max-height:120%;
+  padding-top: 90px ;
+  padding-left: 10px;
+  padding-bottom: 50px;
+}
+img.im2 {
+  padding-bottom: 20px ;
+}
+img.im5 {
+  max-width:100%;
+  max-height:100%;
+}
+img.im7 {
+  max-width:50%;
+  max-height:50%;
+}
+
+
+  </style>
+{% endblock %}
+
+
+{% block content %}
+{% if player.treatment == 'noenvi' %}
+{% elif player.treatment == 'force' %}
+{% else %}
+<div class=a>
+<p> <strong>Sie haben sich entschieden mit der Teilnahme an dieser Studie etwas zum Umweltschutz beizutragen.</strong></p><br>
+</div>
+{% endif %}
+<div class=c>
+<p><strong>Ablauf Teil 1:</strong></p>
+{% if participant.vars.type == 'force' %}
+<p align="justify">In diesem Teil sollen Sie {% if participant.vars.choi == 12 %}6{% else %}24{% endif %} hypothetische Kaufentscheidungen zu Smartphones zu treffen. Genauere Informationen hierzu erhalten Sie auf der nächsten Seite. Vor Beginn stellen wir Ihnen zudem <strong>fünf Verständnisfragen</strong>, die Sie richtig beantworten müssen, um mit der Studie fortzufahren.<br></div>
+{% else %}
+<p align="justify">In diesem Teil bitten wir Sie {% if participant.vars.choi == 12 %}6{% else %}24{% endif %} hypothetische Kaufentscheidungen zu Smartphones zu treffen. Genauere Informationen hierzu erhalten Sie auf der nächsten Seite. Vor Beginn stellen wir Ihnen zudem <strong>fünf Verständnisfragen</strong>, um sicherzustellen, dass Sie alles verstanden haben<br></div>
+{% endif %}
+{% if participant.vars.type == 'noenvi' %}
+{% elif participant.vars.type == 'lowmon' %}
+<div class=b style="text-align: left;">
+<u><strong>Zu den fünf Verständnisfragen:</strong></u>
+<img class=im5 src="{% static "dce/moneyum2.png" %}" />
+                <div class="z">
+                  <div id='button' class="z" onclick="showhide1()"><font color="black">Mehr Infos zu dem Projekt</font></div>
+                  <div id="cont">
+                  <p style="font-size: 20px;" align="justify">Dieses Projekt wird betreut durch die weltweit agierende NGO "Eden Reforestation Project". Diese NGO setzt sich für die Aufforstung gerodeter oder zerstörten Wälder ein. Das Projekt in Nawalparasi hat das Ziel dem Trend des jahrelang schrumpfenden Waldbestandes in der Region entgegenzuwirken, indem in enger Zusammenarbeit mit der lokalen Bevölkerung  Aufforstung betrieben wird. Dies hat nicht nur positive Auswirkungen auf Ressourcenverfügbarkeit und Klima, sondern bietet auch den Menschen vor Ort eine Lebensgrundlage und sichert diese für weitere Generationen.</p>
+                  </div></div>
+        
+
+<div style="padding-bottom: 25px;">
+</div>
+{% else %}
+<div class=b style="text-align: left;">
+<u><strong>Zu den fünf Verständnisfragen:</strong></u>
+<img class=im5 src="{% static "dce/Um2.png" %}" />
+                <div class="z">
+                  <div id='button' class="z" onclick="showhide1()"><font color="black">Mehr Infos zu dem Projekt</font></div>
+                  <div id="cont">
+                  <p style="font-size: 20px;" align="justify">Dieses Projekt wird betreut durch die weltweit agierende NGO "Eden Reforestation Project". Diese NGO setzt sich für die Aufforstung gerodeter oder zerstörten Wälder ein. Das Projekt in Nawalparasi hat das Ziel dem Trend des jahrelang schrumpfenden Waldbestandes in der Region entgegenzuwirken, indem in enger Zusammenarbeit mit der lokalen Bevölkerung  Aufforstung betrieben wird. Dies hat nicht nur positive Auswirkungen auf Ressourcenverfügbarkeit und Klima, sondern bietet auch den Menschen vor Ort eine Lebensgrundlage und sichert diese für weitere Generationen.</p>
+                  </div></div>
+        
+
+<div style="padding-bottom: 50px;">
+</div>
+
+</div >
+
+{% endif %}
+{% if participant.vars.type == 'baseline' %}
+<div class=d style="width: 50%; float: left; vertical-align: middle;">
+<p align="justify">In der Grafik (rechts) können Sie dann nachverfolgen, wie viele Bäume Sie gepflanzt haben.<br><br>Wir garantieren Ihnen, dass diese Spenden an "Eden Reforestation Project" tatsächlich getätigt werden und bieten einen Nachweis per E-Mail an.<br></p></div>
+<div class=b style="margin-left: 50%; text-align: center; width: 50%;vertical-align: top;">
+<u>Beispielgrafik:</u><br>
+<img class=im5 src="{% static "dce/Graph.png" %}" />
+</div>
+
+{% elif participant.vars.type == 'nudge' %}
+<div class=d style="text-align: left;">
+<u><strong>Performancevergleich</strong></u>
+<img class=im5 src="{% static "dce/nudgeperf.png" %}" />
+<img class=im7 src="{% static "dce/perfo.png" %}" />
+<p align="justify"> <br>
+<br>Wir garantieren Ihnen, dass diese Spenden an "Eden Reforestation Project" tatsächlich getätigt werden und bieten einen Nachweis per E-Mail an.<br></p></div>
+
+{% elif participant.vars.type == 'lowmon' %}
+<div class=d style="width: 50%; float: left; vertical-align: middle;">
+<p align="justify">In der Grafik (rechts) können Sie dann nachverfolgen, wie viel Geld Sie bereits zusätzlich verdient haben und wie viele Bäume Sie gepflanzt haben.<br><br>Wir garantieren Ihnen, dass diese Spenden an "Eden Reforestation Project" tatsächlich getätigt werden und bieten einen Nachweis per E-Mail an.<br></p></div>
+<div class=b style="margin-left: 50%; text-align: center; width: 50%;vertical-align: top;">
+<img class=im2 src="{% static "dce/Graphhighmon.png" %}" />
+</div>
+<div class=d style="width: 100%; float: left; vertical-align: middle;">
+
+{% elif participant.vars.type == 'force' %}
+<div class=d style="width: 50%; float: left; vertical-align: middle;">
+<p align="justify">In der Grafik (rechts) können Sie dann nachverfolgen, wie viele Bäume Sie gepflanzt haben.<br></p><p><font color="red"><strong>Falls Sie eine Frage falsch beantworten, müssen Sie 15 Sekunden warten, um einen weiteren Antwortversuch abschicken zu können.</strong></font><br><br>Wir garantieren Ihnen, dass diese Spenden an "Eden Reforestation Project" tatsächlich getätigt werden und bieten einen Nachweis per E-Mail an.<br><br><br></div>
+<div class=b style="margin-left: 50%; text-align: center; width: 50%;vertical-align: middle;">
+<img class=im4 src="{% static "dce/Graph.png" %}" />
+{% else %}
+{% endif %}
+</p>
+</div>
+
+<div class=b style="padding-bottom: 30px" >
+<p><strong>In Teil 2 bitten wir Sie einen Fragebogen vollständig auszufüllen.</strong>
+</p>
+</div>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Vielen Dank für Ihre Teilnahme.
+{% endblock %}
+
+{% block styles %}
+  <style type="text/css">
+.a{
+        padding-top: 10px ;
+        padding-bottom: 10px ;
+    }
+.b{
+        padding-top: 10px ;
+        padding-bottom: 10px ;
+    }
+.c{
+        padding-top: 10px ;
+        padding-bottom: 40px ;
+    }
+.cont{
+        padding-top: 50px ;
+        padding-bottom: 50px ;
+    }
+tr.order td:last-child {
+  border-left: thin solid black;
+  padding-left:3px;
+}
+tr.border td:last-child {
+  border-left: thin solid black;
+  padding-left:3px;
+}
+.oho{
+        padding-left: : 2px ;
+        padding-right: 2px ;
+    }
+tr.border td{
+        padding-top: : 15px ;
+        padding-bottom: 15px ;
+    }
+
+  </style>
+{% endblock %}
+
+{% block scripts %}
+<script language="javascript" type="text/javascript">  
+
+    </script>
+{% endblock %}
+
+{% block content %}
+<p><strong><font=5>Bitte heben Sie nun die Hand, damit die Studienleitenden Sie auszahlen können.<br>
+Ihre Auszahlung beträgt: {{ player.payoff }}</font=5></strong></p>
+
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Auszahlungsinformationen
+{% endblock %}
+{% block styles %}
+  <style type="text/css">
+* {
+    font-size: 22px;/* <-- fonts */
+}
+
+  </style>
+{% endblock %}
+
+{% block content %}
+{% if player.spendeWWF > 0 %}
+<p><strong>Ihre Spende an den WWF: {{player.spendeWWF}}€</strong></p>
+{% else %}
+{% endif %}
+{% if player.spendeMeerPlastik > 0 %}
+<p><strong>Ihre Spende an Meere ohne Plastik, NABU: {{player.spendeMeerPlastik}}€</strong></p>
+{% else %}
+{% endif %}
+{% if player.spendeMannTafel > 0 %}
+<p><strong>Ihre Spende an die Mannheimer Tafel: {{player.spendeMannTafel}}€</strong></p>
+{% else %}
+{% endif %}
+<p><strong>Ihre Auszahlung: {{player.payoff}}</strong></p>
+    {% next_button %}
+{% endblock %}
+
+

@@ -1,0 +1,371 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Versuch Nummer {{ player.test_attempts }}
+{% endblock %}
+{% block styles %}
+	<style type="text/css">
+	.page-header {
+		padding-top: 0px !important;
+		padding-bottom: 0px !important;
+		margin-top: 0px !important;
+		margin-bottom: 10px !important;
+	}
+	.otree-title{
+		font-size: 22px;
+		padding-top: 80px;
+	}
+    input[type='checkbox'] { transform: scale(1.8); }
+    * {
+        font-size: 20px;/* <-- fonts */
+    }
+	.otree-timer{
+		position: absolute;
+    	right: 20%;
+    	width: 15%;
+    	top:50px;
+    	padding: 10px;
+	}
+	#cont{
+		padding-top: 50px ;
+		padding-bottom: 50px ;
+	}
+	.calc{
+		position: fixed;
+    	right: 3%;
+    	width: 15%;
+    	top:60%;
+    	padding: 10px;
+	}
+	.qs{
+		padding-top: 50px ;
+		padding-bottom: 50px ;
+	}
+	#button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+	box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+	background:-moz-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+	background:-webkit-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+	background:-o-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+	background:-ms-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+	background:linear-gradient(to bottom, #b7bac2 5%, #7c858f 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+	background-color:#b7bac2;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #7c7f87;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	padding:5px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #1c2847;
+	}
+	#button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+	background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+	background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+	background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+	background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+	background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+	background-color:#7c858f;
+	}
+	#button:active {
+	position:relative;
+	top:1px;
+	}
+	</style>
+	<style media="screen">
+      .input-group {
+        max-width: 100px;
+      }
+    
+ img.im1 {
+      max-width:10%;
+      max-height:10%;
+    }
+
+
+
+    </style>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script language="javascript" type="text/javascript">  
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ''
+    },
+    xAxis: {
+        labels: {
+                style: {
+                    fontSize:'16px'
+                }
+            },
+        categories: 
+            [{% if participant.vars.type == 'lowmon' %}'','',{% elif participant.vars.type == 'highmon' %}'','',{% elif participant.vars.type == 'nudge' %}'Ihre gepfl. Bäume','Besten 25%','Durchschnitt' {% else %}'',{% endif %}
+        ],
+        crosshair: true
+    },
+    yAxis: [{
+        min: 0,
+        {% if participant.vars.type == 'noenvi' %}
+        {% if subsession.round_number <= 20 %}
+        max:5,
+        {% else %}
+        max:30,
+        {% endif %}
+        tickInterval: 1,
+        {% else %}
+        {% if subsession.round_number <= 20 %}
+        max:5,
+        {% else %}
+        max:15,
+        {% endif %}
+        tickInterval: 1,
+        {% endif %}
+        title: {
+            text: {% if participant.vars.type == 'lowmon' %} 'gepfl. Bäume' {% elif participant.vars.type == 'nudge' %} 'gepfl. Bäume' {% elif participant.vars.type == 'highmon' %} 'gepfl. Bäume' {% else %} null {% endif %}
+        }
+    } 
+    {% if participant.vars.type == 'lowmon' %},{
+        min: 0,
+        {% if subsession.round_number <= 20 %}
+        max:5,
+        {% else %}
+        max:15,
+        {% endif %}
+        tickInterval: 1,
+        title: {
+            text: '€'
+        },
+        opposite: true
+    }
+    {% elif participant.vars.type == 'highmon' %},{
+        min: 0,
+        {% if subsession.round_number <= 20 %}
+        max:5,
+        {% else %}
+        max:15,
+        {% endif %}
+        tickInterval: 1,
+        title: {
+            text: '€'
+        },
+        opposite: true 
+    }
+    {% endif %}
+    ],
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+            pointWidth: 50,
+            {% if participant.vars.type == 'nudge' %}
+            colorByPoint: true,
+            showInLegend: false
+            {% else %}
+            {% endif %}
+        }
+    },
+    series: [{
+    {% if participant.vars.type == 'noenvi' %}
+        name: 'gelöste Aufgaben',
+        data: [2]
+    {% elif participant.vars.type == 'lowmon' %}
+        name: 'gepflanzte Bäume',
+        data: [2],
+        color: "#228B22"},
+        {
+        name: 'Bonus in €',
+        data: [2]
+    {% elif participant.vars.type == 'highmon' %}
+        name: 'gepflanzte Bäume',
+        data: [2],
+        color: "#228B22"}, 
+        {
+        name: 'Bonus in €',
+        data: [2]
+    {% elif participant.vars.type == 'nudge' %}
+        name: '',
+        data: [2,{% if player.test_attempts == 1 %} 0{% elif player.test_attempts == 2 %}1{% elif player.test_attempts == 3 %}2{% elif player.test_attempts == 4 %}3{% elif player.test_attempts == 5 %}3.7{% elif player.test_attempts == 6 %}4.7{% elif player.test_attempts == 7 %}5{% elif player.test_attempts == 8 %}5{% elif player.test_attempts == 9 %}5{% elif player.test_attempts == 10 %}5{% elif player.test_attempts == 11 %}5{% elif player.test_attempts == 12 %}5{% elif player.test_attempts == 13 %}5{% elif player.test_attempts == 14 %}5{% else %}5{% endif %},{% if player.test_attempts == 1 %} 0{% elif player.test_attempts == 2 %}0.6{% elif player.test_attempts == 3 %}1.1{% elif player.test_attempts == 4 %}1.6{% elif player.test_attempts == 5 %}2.2{% elif player.test_attempts == 6 %}2.9{% elif player.test_attempts == 7 %}3.5{% elif player.test_attempts == 8 %}3.9{% elif player.test_attempts == 9 %}4.1{% elif player.test_attempts == 10 %}4.4{% elif player.test_attempts == 11 %}4.7{% elif player.test_attempts == 12 %}4.95{% elif player.test_attempts == 13 %}5{% elif player.test_attempts == 14 %}5{% else %}5{% endif %}],
+        colors: ["#228B22","#76b877","#76b877"]
+    {% else %}
+        name: 'gepflanzte Bäume',
+        data: [2],
+        color: "#228B22"
+    {% endif %}
+    }]
+});
+
+
+
+	    function update(value){
+
+	        document.getElementById("screen").value += value;
+
+	    }
+     
+
+	    function result(){
+
+	        document.getElementById("screen").value = eval(document.getElementById("screen").value);
+
+	    }
+
+	     
+	    
+
+
+	    function reset(){
+
+	        document.getElementById("screen").value = '';
+
+	    }
+
+	    document.getElementById("cont").style.display="none";
+	    function showhide()
+ 		{
+       	var div = document.getElementById("cont");
+		if (div.style.display === "none") {
+        div.style.display = "block";
+    	} else {
+        div.style.display = "none";
+    	}
+		} 
+
+
+		</script>
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/1.8/ref/templates/language/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+
+-->
+
+<body>
+
+    
+{% if participant.vars.type == 'nudge' %}
+<div style="width: 100%; overflow: hidden;padding-top: 100px; padding-bottom: 50px;">
+<div style="display: inline-block; width: 50%; float: left; vertical-align: middle;word-break: break-word;">
+<font size="4">  
+
+                                            <p><b>3.</b>    Was bedeutet ein Wert von 2000 mAh bei der Angabe zur Akkuleistung bei Smartphones?</p>             
+                                              
+                                              <table class="centerTable" style="border-collapse: collapse; border-style: hidden; padding-right: 10px;"  width = "100%">
+                                                     <thead>
+                                                        <tr>
+                                                        <td valign="center" align="center" width="(40/x)%" style="padding-right: 10px;"><p><input type="checkbox" name="Q1_3" value="1" /></p></td>
+                                                        <td valign="center" align="left" width="(40/x)%"><p>Bei einem Stromverbrauch von 2 mA liefert der Akku 1000 Stunden lang Strom.</p> </td>
+                                                        </tr>
+                                                       <tr>
+                                                        <td valign="center" align="center" style="padding-right: 10px;"><p><input type="checkbox" name="Q1_3"  value="2" /></p></td>
+                                                        <td valign="center" align="left"><p>Bei einem Stromverbrauch von 1000 mA liefert der Akku 2000 Stunden lang Strom.</p> </td>            
+                                                      </tr>
+                                                      <tr>
+                                                        <td valign="center" align="center" style="padding-right: 10px;"><p><input type="checkbox" name="Q1_3"  value="99" /></p></td>
+                                                        <td valign="center" align="left"><p>Bei einem Stromverbrauch von 1 mA liefert der Akku 100000 Stunden lang Strom.</p> </td>            
+                                                      </tr>
+                                                      <tr>
+                                                        <td valign="center" align="center" style="padding-right: 10px;"><p><input type="checkbox" name="Q1_3"  value="4" /></p></td>
+                                                        <td valign="center" align="left"><p>Bei einem Stromverbrauch von 500 mA liefert der Akku 2 Minuten lang Strom.</p> </td>            
+                                                      </tr>
+                                                    </thead>
+                                                </table>  
+                                                           {{ form.Q1_3.errors }}
+                                                           <br>
+</div>
+<div style="margin-left: 50%; text-align: center; width: 50%;vertical-align: middle;">   
+
+                {% if player.test_attempts == 1 %} 0{% elif player.test_attempts == 2 %}<img class=im1 src="{% static "dce/happy.png" %}" "/><br><p>Sie sind unter den Besten 25% der Teilnehmenden.</p>{% elif player.test_attempts == 3 %}<img class=im1 src="{% static "dce/happy.png" %}" "/><br><p>Sie sind unter den Besten 25% der Teilnehmenden.</p>{% elif player.test_attempts == 4 %}<img class=im1 src="{% static "dce/neutral.png" %}" "/><br><p>Ihre Performance ist durchschnittlich.</p>{% elif player.test_attempts == 5 %}<img class=im1 src="{% static "dce/neutral.png" %}" "/><br><p>Ihre Performance ist durchschnittlich.</p>{% elif player.test_attempts == 6 %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% elif player.test_attempts == 8 %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% elif player.test_attempts == 9 %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% elif player.test_attempts == 10 %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% elif player.test_attempts == 11 %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% elif player.test_attempts == 12 %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% elif player.test_attempts == 13 %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% elif player.test_attempts == 14 %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% else %}<img class=im1 src="{% static "dce/frowny.png" %}" "/><br><p>Ihre Performance ist unter der Durchschnittsperformance</p>{% endif %}
+                <br>
+
+                <b>Gepflanzte Bäume bei Versuch {{ player.test_attempts }}<b><br>
+                <script src="https://code.highcharts.com/highcharts.js"></script>
+                <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+                <div id="container" style="min-width: 100px; height: 400px; margin: 0 auto"></div>
+</div>
+            {% else %}
+            <div style="width: 100%; overflow: hidden;padding-top: 100px; padding-bottom: 50px;">
+            <div style="width: 65%; float: left; vertical-align: middle;">
+            <font size="4">
+                                            <p><b>3.</b>    Was bedeutet ein Wert von 2000 mAh bei der Angabe zur Akkuleistung bei Smartphones?</p>             
+                                              
+                                              <table class="centerTable" style="border-collapse: collapse; border-style: hidden; padding-right: 10px;"  width = "100%">
+                                                     <thead>
+                                                        <tr>
+                                                        <td valign="center" align="center" width="(40/x)%" style="padding-right: 10px;"><p><input type="checkbox" name="Q1_3" value="1" /></p></td>
+                                                        <td valign="center" align="left" width="(40/x)%"><p>Bei einem Stromverbrauch von 2 mA liefert der Akku 1000 Stunden lang Strom.</p> </td>
+                                                        </tr>
+                                                       <tr>
+                                                        <td valign="center" align="center" style="padding-right: 10px;"><p><input type="checkbox" name="Q1_3"  value="2" /></p></td>
+                                                        <td valign="center" align="left"><p>Bei einem Stromverbrauch von 1000 mA liefert der Akku 2000 Stunden lang Strom.</p> </td>            
+                                                      </tr>
+                                                      <tr>
+                                                        <td valign="center" align="center" style="padding-right: 10px;"><p><input type="checkbox" name="Q1_3"  value="99" /></p></td>
+                                                        <td valign="center" align="left"><p>Bei einem Stromverbrauch von 1 mA liefert der Akku 100000 Stunden lang Strom.</p> </td>            
+                                                      </tr>
+                                                      <tr>
+                                                        <td valign="center" align="center" style="padding-right: 10px;"><p><input type="checkbox" name="Q1_3"  value="4" /></p></td>
+                                                        <td valign="center" align="left"><p>Bei einem Stromverbrauch von 500 mA liefert der Akku 2 Minuten lang Strom.</p> </td>            
+                                                      </tr>
+                                                    </thead>
+                                                </table>  
+                                                           {{ form.Q1_3.errors }}
+                                                           <br>
+                </div>  
+                <div style="flex-grow: 1; vertical-align: bottom; text-align: center;">&nbsp;</div>
+                <div style="flex-grow: 1; vertical-align: bottom; text-align: center;">&nbsp;</div>
+                <div style="flex-grow: 1; vertical-align: bottom; text-align: center;">&nbsp;</div>
+                <div style="flex-grow: 1; vertical-align: bottom; text-align: center;">&nbsp;</div>
+
+<div style="margin-left: 65%; text-align: center; width: 35%;vertical-align: middle;">                         
+                <script src="https://code.highcharts.com/highcharts.js"></script>
+                <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+                <div id="container" style="min-width: 50px; height: 400px; margin: 0 auto"></div> 
+                <div style="height:50px;"></div>
+            
+            {% endif %}
+            </font>
+</div>
+</body>
+
+
+
+
+
+    <button class="answer btn btn-success" >Antworten</button>
+
+{% endblock %}

@@ -1,0 +1,717 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Fragebogen
+{% endblock %}
+
+{% block styles %}
+  <style type="text/css">
+.a{
+        padding-top: 10px ;
+        padding-bottom: 10px ;
+    }
+.b{
+        padding-top: 10px ;
+        padding-bottom: 10px ;
+    }
+.c{
+        padding-top: 10px ;
+        padding-bottom: 40px ;
+    }
+.cont{
+        padding-top: 50px ;
+        padding-bottom: 50px ;
+    }
+tr.order td:last-child {
+  border-left: thin solid black;
+  padding-left:3px;
+}
+tr.border td:last-child {
+  border-left: thin solid black;
+  padding-left:3px;
+}
+.oho{
+        padding-left: : 2px ;
+        padding-right: 2px ;
+    }
+tr.border td{
+        padding-top: : 15px ;
+        padding-bottom: 15px ;
+    }
+
+  </style>
+{% endblock %}
+
+{% block scripts %}
+<script language="javascript" type="text/javascript">  
+  document.getElementById("addit").style.display="none";
+      function show1()
+    {
+        var table = document.getElementById("addit");
+     if (table.style.display === "none") {
+        table.style.display = "block";
+      } 
+    } 
+    function hide1()
+    {
+        var table = document.getElementById("addit");
+     if (table.style.display === "block")
+     {
+        table.style.display = "none";
+      }
+    } 
+
+    document.getElementById("addit1").style.display="none";
+      function show()
+    {
+        var table = document.getElementById("addit1");
+     if (table.style.display === "none") {
+        table.style.display = "block";
+      } 
+    } 
+    function hide()
+    {
+        var table = document.getElementById("addit1");
+     if (table.style.display === "block")
+     {
+        table.style.display = "none";
+      }
+    } 
+    </script>
+{% endblock %}
+
+{% block content %}
+
+<p><p>Wir bitten Sie den folgenden Fragebogen auszuf&uuml;llen. Nachdem Sie den Fragebogen ausgef&uuml;llt haben, ist die Studie beendet.</p></p>
+
+<div class="cont">
+<p><b>1.</b>    Bitte erinnern Sie sich an die Verständnisaufgaben in Teil I. Wie sehr stimmen Sie folgender Aussage zu: "Das Pflanzen der Bäume in dem ausgewählten Projekt ist eine sinnvolle Maßnahme für die Umwelt und den Klimaschutz" ?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+            <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input type="radio" name="Deserving1" value="1" required/></p></td>
+            <td valign="center" align="left" width="(40/x)%"><p>Stimme voll und ganz zu</p> </td>
+            </tr>
+           <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving1"  value="2" required/></p></td>
+            <td valign="center" align="left"><p>Stimme eher zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving1"  value="3" required/></p></td>
+            <td valign="center" align="left"><p>Bin unentschieden</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving1"  value="4" required/></p></td>
+            <td valign="center" align="left"><p>Stimme eher nicht zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving1"  value="5" required/></p></td>
+            <td valign="center" align="left"><p>Stimme überhaupt nicht zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving1"  value="6" required/></p></td>
+            <td valign="center" align="left"><p>Keine Angabe</p> </td>            
+          </tr>
+        </thead>
+    </table>  
+       {{ form.Deserving1.errors }}
+<br>
+<br>
+<br>
+<p><b>2.</b>    Wie schwierig fanden Sie die Verständnisfragen in Teil 1?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+            <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input type="radio" name="exhaust1" value="1" required/></p></td>
+            <td valign="center" align="left" width="(40/x)%"><p>Sehr schwer</p> </td>
+            </tr>
+           <tr>
+            <td valign="center" align="center"><p><input type="radio" name="exhaust1"  value="2" required/></p></td>
+            <td valign="center" align="left"><p>Eher schwer</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="exhaust1"  value="3" required/></p></td>
+            <td valign="center" align="left"><p>Wenig schwer</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="exhaust1"  value="4" required/></p></td>
+            <td valign="center" align="left"><p>Überhaupt schwer</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="exhaust1"  value="5" required/></p></td>
+            <td valign="center" align="left"><p>Keine Angabe</p> </td>            
+          </tr>
+        </thead>
+    </table>  
+       {{ form.exhaust1.errors }}
+<br>
+<br>
+<br>
+<p><b>3.</b>    Was hat Sie dazu bewegt die Verständnisfragen in Teil I zu bearbeiten?</p>
+<br>
+<table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "70%">
+         <thead>
+            <tr>
+            <td valign="bottom" align="center" width="(70/x)%"><p></p></td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>0</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>1</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>2</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>3</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>4</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>5</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>6</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>7</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>8</p> </td>
+           <td valign="bottom" align="center" width="(70/x)%"><p>9</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>10</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p></p> </td>
+            </tr>
+           <tr>
+            <td valign="center" align="center"><p>Eigenmotivation</p></td>
+            <td valign="center" align="center"><input type="radio" name="volun" value="0" id="1" required/></td>   
+            <td valign="center" align="center"><input type="radio" name="volun" value="1" id="2" required/></td>  
+            <td valign="center" align="center"><input type="radio" name="volun" value="2" id="3" required/></td>  
+            <td valign="center" align="center"><input type="radio" name="volun" value="3" id="4" required/></td>   
+            <td valign="center" align="center"><input type="radio" name="volun" value="4" id="5" required/></td>  
+            <td valign="center" align="center"><input type="radio" name="volun" value="5" id="6" required/></td>    
+            <td valign="center" align="center"><input type="radio" name="volun" value="6" id="7" required/></td>   
+            <td valign="center" align="center"><input type="radio" name="volun" value="7" id="8" required/></td>  
+            <td valign="center" align="center"><input type="radio" name="volun" value="8" id="9" required/></td>    
+            <td valign="center" align="center"><input type="radio" name="volun" value="9" id="10" required/></td>   
+            <td valign="center" align="center"><input type="radio" name="volun" value="10" id="11" required/></td>  
+            <td valign="center" align="center"><p>externe Faktoren</p> </td>             
+          </tr>
+        </thead>
+    </table>  
+       {{ form.volun.errors }}
+<br>
+<br>
+<br>
+<p><b>4.</b>    Bitte erinnern Sie sich an die getätigte Spendenentscheidung in Teil II. Wie sehr stimmen Sie folgender Aussage zu: "Die ausgewählte(n) Spendenorganisation(en) verdienen meine Unterstützung" ?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+            <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input type="radio" name="Deserving2" value="1" required/></p></td>
+            <td valign="center" align="left" width="(40/x)%"><p>Stimme voll und ganz zu</p> </td>
+            </tr>
+           <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving2"  value="2" required/></p></td>
+            <td valign="center" align="left"><p>Stimme eher zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving2"  value="3" required/></p></td>
+            <td valign="center" align="left"><p>Bin unentschieden</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving2"  value="4" required/></p></td>
+            <td valign="center" align="left"><p>Stimme eher nicht zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving2"  value="5" required/></p></td>
+            <td valign="center" align="left"><p>Stimme überhaupt nicht zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Deserving2"  value="6" required/></p></td>
+            <td valign="center" align="left"><p>Keine Angabe</p> </td>            
+          </tr>
+        </thead>
+    </table>  
+       {{ form.Deserving2.errors }}
+<br>
+<br>
+<br><p><b>5.</b>    Bitte erinnern Sie sich an die zuvor getätigte Spendenentscheidung in Teil I und II. Wie sehr trifft folgender Aussage zu: "Ich gehe davon aus, dass meine getätigte Spende die ausgewählte Spendenorganisation tatsächlich erreicht." </p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+            <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input type="radio" name="Realization" value="1" required/></p></td>
+            <td valign="center" align="left" width="(40/x)%"><p>Trifft voll und ganz zu</p> </td>
+            </tr>
+           <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Realization"  value="2" required/></p></td>
+            <td valign="center" align="left"><p>Trifft zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Realization"  value="3" required/></p></td>
+            <td valign="center" align="left"><p>weder noch</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Realization"  value="4" required/></p></td>
+            <td valign="center" align="left"><p>trifft nicht zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Realization"  value="5" required/></p></td>
+            <td valign="center" align="left"><p>Trifft ganz und gar nicht zu</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="Realization"  value="6" required/></p></td>
+            <td valign="center" align="left"><p>Keine Angabe</p> </td>            
+          </tr>
+        </thead>
+    </table>  
+       {{ form.Realization.errors }}      
+<br>
+<br>
+<br>
+<p><b>6.</b>    Wie sehr stimmen Sie folgenden Aussagen zu?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "100%">
+         <thead>
+         <tr class=order>
+            <td class=oho valign="center" align="right" width="38%"></td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme voll und ganz zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme eher zu</p></td>
+            <td class=oho valign="center" align="center" width="12%"><p>Bin unentschieden</p></td>
+            <td class=oho valign="center" align="center" width="12%"><p></p>Stimme eher nicht zu</td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme überhaupt nicht zu</p> </td>
+            <td class=oho valign="center" align="right" width="12%"><p>Keine Angabe</p> </td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Menschen haben das Recht, die Umwelt nach ihren Bedürfnissen anzupassen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env1" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env1" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env1" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env1" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env1" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env1" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Menschen missbrauchen die Erde schwerwiegend</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env2" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env2" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env2" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env2" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env2" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env2" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Pflanzen und Tiere haben dieselben Existenzrechte wie Menschen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env3" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env3" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env3" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env3" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env3" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env3" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Die Natur ist stark genug, um mit den Auswirkungen der modernen Industrienationen zurecht zu kommen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env4" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env4" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env4" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env4" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env4" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env4" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Menschen sind dazu bestimmt, den Rest der Natur zu beherrschen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env5" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env5" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env5" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env5" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env5" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env5" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Das Gleichgewicht der Natur ist sehr empfindlich und leicht zu erschüttern</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env6" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env6" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env6" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env6" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env6" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env6" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Im Allgemeinen kann man Menschen vertrauen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env7" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env7" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env7" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env7" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env7" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env7" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Heutzutage kann man sich auf niemanden mehr verlassen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env8" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env8" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env8" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env8" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env8" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env8" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Wenn man mit Fremden zu tun hat, ist es besser, vorsichtig zu sein, bevor man ihnen vertraut</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env9" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env9" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env9" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env9" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Env9" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Env9" value="6" required/></td>
+          </tr>
+        </thead>
+    </table>  
+       {{ form.Env1.errors }}
+       {{ form.Env2.errors }}
+       {{ form.Env3.errors }}
+       {{ form.Env4.errors }}
+       {{ form.Env5.errors }}
+       {{ form.Env6.errors }}
+       {{ form.Env7.errors }}
+       {{ form.Env8.errors }}
+       {{ form.Env9.errors }}    
+<br>
+<br>
+<br>
+<p><b>7.</b>    Wie sehr treffen folgenden Aussagen auf Sie zu?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "100%">
+         <thead>
+         <tr class=order>
+            <td class=oho valign="center" align="right" width="38%"></td>
+            <td class=oho valign="center" align="center" width="12%"><p></p>Trifft voll und ganz zu</td>
+            <td class=oho valign="center" align="center" width="12%"><p>Trifft eher zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>weder noch</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Trifft eher nicht zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Trifft überhaupt nicht zu</p> </td>
+            <td class=oho valign="center" align="right" width="12%"><p>Keine Angabe</p> </td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Umweltfreundliches Verhalten ist ein wichtiger Teil von dem was mich ausmacht</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent1" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent1" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent1" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent1" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent1" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="EnvIdent1" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Ich versuche durch mein Handeln (z.B. Konsum) negative Auswirkungen auf die Umwelt zu minimieren</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent2" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent2" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent2" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent2" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent2" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="EnvIdent2" value="6" required/></td>
+          </tr>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Ich definiere mich selbst als umweltbewusste Person</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent3" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent3" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent3" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent3" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="EnvIdent3" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="EnvIdent3" value="6" required/></td>
+          </tr>
+          {{ form.EnvIdent1.errors }}
+          {{ form.EnvIdent2.errors }}
+          {{ form.EnvIdent3.errors }}
+        </thead>
+    </table>  
+<br>
+<br>
+<br>
+<p><b>8.</b>    Wie sehr stimmen Sie folgenden Aussagen zu?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "100%">
+         <thead>
+         <tr class=order>
+            <td class=oho valign="center" align="right" width="38%"></td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme voll und ganz zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme eher zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Bin unentschieden</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme eher nicht zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme überhaupt nicht zu</p> </td>
+            <td class=oho valign="center" align="right" width="12%"><p>Keine Angabe</p> </td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Umwelt- und Klimamaßnahmen können den Klimawandel effektiv aufgehalten</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy1" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy1" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy1" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy1" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy1" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Efficacy1" value="6" required/></td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Ich denke, dass ich die Fähigkeit habe eigene Maßnahmen zum Schutz von Klima und Umwelt ergreifen zu können</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy2" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy2" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy2" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy2" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy2" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Efficacy2" value="6" required/></td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Obwohl es mir Umstände bereitet, bin ich dazu in der Lage mein Verhalten zum Schutz von Umwelt und Klima zu ändern</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy3" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy3" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy3" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy3" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy3" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Efficacy3" value="6" required/></td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Ich kann versuchen in jeder erdenklicher Hinsicht mein bestes zu tun, um die Umwelt und das Klima zu schützen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy4" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy4" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy4" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy4" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Efficacy4" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Efficacy4" value="6" required/></td>
+          </tr>
+        </thead>
+    </table>  
+       {{ form.Efficacy1.errors }}
+       {{ form.Efficacy2.errors }}
+       {{ form.Efficacy3.errors }}
+       {{ form.Efficacy4.errors }}
+<br>
+<br>
+<br>
+<p><b>9.</b>    Wie sehr stimmen Sie folgenden Aussagen zu?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "100%">
+         <thead>
+         <tr class=order>
+            <td class=oho valign="center" align="right" width="38%"></td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme voll und ganz zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme eher zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Bin unentschieden</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme eher nicht zu</p> </td>
+            <td class=oho valign="center" align="center" width="12%"><p>Stimme überhaupt nicht zu</p> </td>
+            <td class=oho valign="center" align="right" width="12%"><p>Keine Angabe</p> </td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Jede Person sollte ein Teil ihres Einkommens mit anderen teilen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist1" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist1" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist1" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist1" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist1" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Deontologist1" value="6" required/></td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Wir müssen hilfsbedürftigen Menschen helfen </td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist2" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist2" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist2" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist2" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist2" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Deontologist2" value="6" required/></td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Jeder sollte sich sozial engagieren</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist3" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist3" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist3" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist3" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist3" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Deontologist3" value="6" required/></td>
+          </tr>
+            <tr class=border>
+            <td valign="center" align="left" width="38%">Wir sollten fremden Personen in gleichem Maße helfen wie Menschen, die uns nahe stehen</td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist4" value="1" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist4" value="2" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist4" value="3" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist4" value="4" required/></td>
+            <td valign="center" align="center" width="12%"><input type="radio" label="" name="Deontologist4" value="5" required/></td>
+            <td valign="center" align="right" width="12%"><input type="radio" label="" name="Deontologist4" value="6" required/></td>
+          </tr>
+        </thead>
+    </table>  
+       {{ form.Deontologist1.errors }}
+       {{ form.Deontologist2.errors }}
+       {{ form.Deontologist3.errors }}
+       {{ form.Deontologist4.errors }}
+
+<br>
+<br>
+<br><p><b>10.</b>    Haben Sie im letzten Jahr Spenden über 10€ getätigt?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+            <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input onclick="show1()" type="radio"  name="Donation1" value="1" required/></p></td>
+            <td valign="center" align="left" width="(40/x)%"><p>Ja</p> </td>
+            </tr>
+           <tr>
+            <td valign="center" align="center"><p><input onclick="hide1()" type="radio" name="Donation1"  value="2" required/></p></td>
+            <td valign="center" align="left"><p>Nein</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input onclick="hide1()" type="radio" name="Donation1"  value="3" required/></p></td>
+            <td valign="center" align="left"><p>Keine Angabe</p> </td>            
+          </tr>
+        </thead>
+    </table>  
+      {{ form.Donation1.errors }}
+<br>
+<br>
+<br>
+<div id="addit">
+<br><p><b>10.1</b>    Wie hoch ist die Summe dieser Spenden ungefähr?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+            <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input type="text" name="Donation2" /></p></td>
+            </tr>
+        </thead>
+    </table> 
+     
+<br>
+<br>
+<br>
+</div>
+<p><b>11.</b>    Wie schätzen Sie sich persönlich ein: Sind Sie im Allgemeinen ein risikobereiter Mensch oder versuchen Sie, Risiken zu vermeiden? Bitte kreuzen Sie ein Kästchen auf der Skala an, wobei der Wert 0 bedeutet: 'gar nicht risikobereit' und der Wert 10: 'sehr risikobereit'. Mit den Werten dazwischen können Sie Ihre Einschätzung abstufen.</p>
+<br>
+<br>
+<table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "70%">
+         <thead>
+            <tr>
+            <td valign="bottom" align="center" width="(70/x)%"><p></p></td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>0</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>1</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>2</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>3</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>4</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>5</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>6</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>7</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>8</p> </td>
+           <td valign="bottom" align="center" width="(70/x)%"><p>9</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p>10</p> </td>
+            <td valign="bottom" align="center" width="(70/x)%"><p></p> </td>
+            </tr>
+           <tr>
+            <td valign="center" align="center"><p>gar nicht risikobereit</p></td>
+            <td valign="center" align="center"><input type="radio" name="risk" value="0" id="1" required/></td>   
+            <td valign="center" align="center"><input type="radio" name="risk" value="1" id="2" required/></td>  
+            <td valign="center" align="center"><input type="radio" name="risk" value="2" id="3" required/></td>  
+            <td valign="center" align="center"><input type="radio" name="risk" value="3" id="4" required/></td>   
+            <td valign="center" align="center"><input type="radio" name="risk" value="4" id="5" required/></td>  
+            <td valign="center" align="center"><input type="radio" name="risk" value="5" id="6" required/></td>    
+            <td valign="center" align="center"><input type="radio" name="risk" value="6" id="7" required/></td>   
+            <td valign="center" align="center"><input type="radio" name="risk" value="7" id="8" required/></td>  
+            <td valign="center" align="center"><input type="radio" name="risk" value="8" id="9" required/></td>    
+            <td valign="center" align="center"><input type="radio" name="risk" value="9" id="10" required/></td>   
+            <td valign="center" align="center"><input type="radio" name="risk" value="10" id="11" required/></td>  
+            <td valign="center" align="center"><p>sehr risikobereit</p> </td>             
+          </tr>
+        </thead>
+    </table>  
+       {{ form.risk.errors }}
+<br>    
+<br>
+<br>
+<p><b>14.</b>   Bitte geben Sie Ihr Geschlecht an.</p>
+<br>
+    {% formfield player.gender label="" %}
+<br>
+<br>
+<br>        
+<p><b>15.</b>   Wie alt sind Sie?</p>
+<br>
+    {% formfield player.age label="" %}
+<br>
+<br>
+<br>
+    <p><b>17.</b>   Welche Muttersprache(n) sprechen Sie?</p>
+<br>
+    {% formfield player.language label="" %}
+<br>
+<br>
+<br>
+<p><b>18.</b>   Welche Partei würden Sie wählen, wenn am nächsten Sonntag Bundestagswahl wäre?</p>
+<br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+            <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input type="radio" name="party" value="1" required/></p></td>
+            <td valign="center" align="left" width="(40/x)%"><p>CDU/CSU</p> </td>
+            </tr>
+           <tr>
+            <td valign="center" align="center"><p><input type="radio" name="party"  value="2" required/></p></td>
+            <td valign="center" align="left"><p>SPD</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="party"  value="3" required/></p></td>
+            <td valign="center" align="left"><p>AFD</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="party"  value="8" required/></p></td>
+            <td valign="center" align="left"><p>FDP</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="party"  value="4" required/></p></td>
+            <td valign="center" align="left"><p>Bündnis 90/Die Grünen</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="party"  value="5" required/></p></td>
+            <td valign="center" align="left"><p>Die Linke</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="party"  value="6" required/></p></td>
+            <td valign="center" align="left"><p>andere</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center"><p><input type="radio" name="party"  value="7" required/></p></td>
+            <td valign="center" align="left"><p>Keine Angabe</p> </td>            
+          </tr>
+        </thead>
+    </table>  
+       {{ form.party.errors }}
+<br>
+<br>
+<br><p><b>10.</b>    Möchten Sie über die Höhe der getätigten Spenden in dieser Studie per E-Mail informiert werden?</p>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+           <tr>
+            <td valign="center" align="center"><p><input onclick="show()" type="radio" name="Info"  value="1" required/></p></td>
+            <td valign="center" align="left"><p>Ja</p> </td>            
+          </tr>
+          <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input onclick="hide()" type="radio"  name="Info" value="2" required/></p></td>
+            <td valign="center" align="left" width="(40/x)%"><p>Nein</p> </td>
+            </tr>
+        </thead>
+    </table>  
+      {{ form.Info.errors }}
+<br>
+<br>
+<div id="addit1">
+<br><p><b>10.1</b>    Wie lautet Ihre E-Mail Adresse?</p>
+    <br>
+  <br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+            <tr>
+            <td valign="center" align="center" width="(40/x)%"><p><input type="text" name="email" /></p></td>
+            </tr>
+        </thead>
+    </table>  
+    <br>
+<br>
+<br>
+</div>
+
+
+    {% next_button %}
+
+{% endblock %}
+
+

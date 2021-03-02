@@ -1,0 +1,93 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Auszahlung
+{% endblock %}
+{% block styles %}
+  <style type="text/css">
+  .page-header {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+  }
+  .otree-title{
+    padding-top: 80px;
+    font-size: 22px;
+  }
+  .otree-timer{
+    position: absolute;
+      right: 20%;
+      width: 15%;
+      top:50px;
+      padding: 10px;
+  }
+  .cont{
+    padding-top: 50px ;
+    padding-bottom: 50px ;
+  }
+  * {
+        font-size: 20px;/* <-- fonts */
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="cont">
+<p>Es wurde {% if player.locho == "risk" %}Lotterie 1{% else %}Lotterie 2{% endif %} zufällig ausgewählt. </p>
+<table border=1 class="centerTable" width = "100%">
+         <thead>
+            <tr>
+              <td width="(100/x)%" align="center"><b>Auszahlungsrelevante Lotterie</b></td>          
+              <td width="(100/x)%" align="center"><b>Ihre Zahlungsbereitschaft</b></td>
+              <td width="(100/x)%" align="center"><b>Ticketpreis</b></td>
+              {% if player.locho == "risk" %}{% else %}
+              <td width="(100/x)%" align="center"><b>Ihre Farbwahl</b></td>
+              {% endif %}
+              <td width="(100/x)%" align="center"><b>Ergebnis</b></td>
+              <td width="(100/x)%" align="center"><b>Auszahlung Lotterie</b></td>
+            </tr>
+            <tr>
+              <td width="(100/x)%" align="center" height="70px">{% if player.locho == "risk" %}Lotterie 1{% else %}Lotterie 2{% endif %}</td>
+              <td width="(100/x)%" align="center" height="70px">{% if player.locho == "risk" %}{{ player.WTPri }}€{% else %}{{ player.WTPam }}€{% endif %}</td>  
+              <td width="(100/x)%" align="center" height="70px">{{ player.randnu }}€</td>
+              {% if player.locho == "risk" %}{% else %}
+              <td width="(100/x)%" align="center"><b>{{ player.colchoam }}</b></td>
+              {% endif %}
+              <td width="(100/x)%" align="center" height="70px">{{ player.won }}</td>
+              <td width="(100/x)%" align="center" height="70px">{{ player.pay }}€</td>
+            </tr>
+
+         </tbody>
+         
+      </table>
+      <br>
+      <br>
+
+      <p><strong>Zusammensetzung der Auszahlung für die Teilnahme an der Studie</strong></p>
+  <table border=1 class="centerTable" width = "100%">
+         <thead>
+            <tr>
+              <td width="(100/x)%" align="center"><b>Teilnahmevergütung</b></td>
+              <td width="(100/x)%" align="center"><b>Auszahlung Lotterie</b></td>
+              <td width="(100/x)%" align="center"><b>Spende</b></td>
+              <td width="(100/x)%" align="center"><b>Auszahlung insgesamt</b></td>
+            </tr>
+            <tr>
+              <td width="(100/x)%" align="center" height="70px">12€</td>
+              <td width="(100/x)%" align="center" height="70px">{{ player.pay }}€</td>
+              <td width="(100/x)%" align="center" height="70px">{{ participant.vars.doni }}€</td>
+              <td width="(100/x)%" align="center" height="70px">{{ player.payoff }}</td>
+            </tr>
+
+         </tbody>
+         
+      </table>
+
+    {% next_button %}
+
+{% endblock %}
+
+
